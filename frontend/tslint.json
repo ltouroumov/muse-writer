@@ -64,7 +64,7 @@
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": [true],
     "no-console": [
-      true, 
+      false,
       "assert", 
       "count", 
       "debug", 
@@ -100,11 +100,11 @@
     "no-invalid-this": true,
     "no-magic-numbers": false, //TODO_LINT (we should lint for this)
     "no-namespace": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-reference": true,
     "no-require-imports": true,
     "no-shadowed-variable": true,
-    "no-string-literal": true,
+    "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
@@ -184,8 +184,8 @@
       "check-type"
     ],
     // ANGULAR 2 Rules
-    "directive-selector": [true, "attribute", "qs", "camelCase"],
-    "component-selector": [true, "element", "qs", "kebab-case"],
+    "directive-selector": [true, "attribute", "muse", "camelCase"],
+    "component-selector": [true, "element", "muse", "kebab-case"],
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "use-input-property-decorator": true,

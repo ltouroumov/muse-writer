@@ -1,0 +1,52 @@
+<md-card>
+  <md-card-title>{{ action }} project</md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <form #projectForm="ngForm">
+      <div layout="row">
+        <md-input-container flex>
+          <input mdInput
+                 #titleElement
+                 #titleControl="ngModel"
+                 type="text"
+                 placeholder="Project Title"
+                 [(ngModel)]="project.title"
+                 name="title"
+                 maxlength="500"
+                 required>
+          <md-hint align="start">
+                <span [hidden]="titleControl.pristine" class="tc-red-600">
+                  <span [hidden]="!titleControl.hasError('required')">Required</span>
+                </span>
+          </md-hint>
+          <md-hint align="end">{{titleElement.value.length}} / 500</md-hint>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex>
+          <textarea mdInput
+                    #summaryElement
+                    #summaryControl="ngModel"
+                    type="text"
+                    placeholder="Project Summary"
+                    [(ngModel)]="project.summary"
+                    name="summary"
+                    maxlength="5000"
+                    rows="20"
+                    required></textarea>
+          <md-hint align="start">
+                <span [hidden]="summaryControl.pristine" class="tc-red-600">
+                  <span [hidden]="!summaryControl.hasError('required')">Required</span>
+                </span>
+          </md-hint>
+          <md-hint align="end">{{summaryElement.value.length}} / 5000</md-hint>
+        </md-input-container>
+      </div>
+    </form>
+  </md-card-content>
+  <md-divider></md-divider>
+  <md-card-actions>
+    <button md-button [disabled]="!projectForm.form.valid" color="primary" (click)="save()">Save</button>
+    <button md-button (click)="goBack()">Cancel</button>
+  </md-card-actions>
+</md-card>

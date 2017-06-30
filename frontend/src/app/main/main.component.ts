@@ -2,28 +2,16 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'qs-main',
+  selector: 'muse-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
 
   routes: Object[] = [{
-      title: 'Dashboard',
-      route: '/',
+      title: 'Projects',
+      route: '/projects',
       icon: 'dashboard',
-    }, {
-      title: 'Product Dashboard',
-      route: '/product',
-      icon: 'view_quilt',
-    }, {
-      title: 'Product Logs',
-      route: '/logs',
-      icon: 'receipt',
-    }, {
-      title: 'Manage Users',
-      route: '/users',
-      icon: 'people',
     },
   ];
 

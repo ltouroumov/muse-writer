@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpInterceptorService, RESTService } from '@covalent/http';
-import { MOCK_API } from '../config/api.config';
+import { API_BASE_URL } from '../config/api.config';
 
 @Injectable()
 export class ItemsService extends RESTService<any> {
 
   constructor(private _http: HttpInterceptorService) {
     super(_http, {
-      baseUrl: MOCK_API,
+      baseUrl: API_BASE_URL,
       path: '/items',
     });
   }

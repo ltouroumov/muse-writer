@@ -1,0 +1,29 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span *ngIf="project">{{ project.title }}</span>
+    <span flex></span>
+    <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank">
+      <md-icon svgIcon="assets:github"></md-icon>
+    </a>
+  </div>
+  <ng-template tdLoading="project.load">
+    <div layout="row" flex layout-fill>
+      <div flex-gt-sm="20" flex layout-fill>
+        <md-card>
+          <md-card-title>Documents</md-card-title>
+          <md-divider></md-divider>
+          <muse-editor-document-view [documents]="documents"></muse-editor-document-view>
+        </md-card>
+      </div>
+      <div flex-gt-sm="80" flex layout-fill>
+        <md-card>
+          <md-card-title>Document Title</md-card-title>
+          <md-divider></md-divider>
+          <md-card-content>
+            <p>Document Editor</p>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </ng-template>
+</td-layout-nav>

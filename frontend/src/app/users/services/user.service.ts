@@ -30,7 +30,7 @@ export class UserService extends RESTService<IUser> {
   }
 }
 
-export const USERS_API: InjectionToken<string> = new InjectionToken<string>('USERS_API');
+export const USERS_API: InjectionToken<string> = new InjectionToken<string>('PROJECTS_API');
 
 export function USER_PROVIDER_FACTORY(
     parent: UserService, interceptorHttp: HttpInterceptorService, api: string): UserService {
