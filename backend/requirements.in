@@ -1,0 +1,9 @@
+Django
+django-filter
+django-forms-bootstrap
+requests
+django-extensions
+tabulate
+django-jinja
+django-tastypie
+django-cors-headers
