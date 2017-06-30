@@ -1,0 +1,11 @@
+<md-nav-list class="document-tree-node">
+  <a md-list-item>
+    <h3 md-line>{{ node.title }}</h3>
+    <p md-line>{{ 500 | digits }} words</p>
+  </a>
+  <div class="children" *ngIf="node.children">
+    <ng-template let-item let-last="last" ngFor [ngForOf]="node.children">
+      <muse-editor-document-view-node [node]="item"></muse-editor-document-view-node>
+    </ng-template>
+  </div>
+</md-nav-list>

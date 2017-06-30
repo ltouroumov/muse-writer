@@ -10,7 +10,18 @@
     <div layout="row" flex layout-fill>
       <div flex-gt-sm="20" flex layout-fill>
         <md-card>
-          <md-card-title>Documents</md-card-title>
+          <md-menu #bindersMenu>
+            <button md-menu-item *ngFor="let item of binders" [value]="item.id" (click)="curBinder = item">
+              <md-icon>folder</md-icon>
+              {{ item.name }}
+            </button>
+          </md-menu>
+          <md-card-title layout="row">
+            <button md-button [mdMenuTriggerFor]="bindersMenu" layout-fill style="text-align:left">
+              <md-icon>folder</md-icon>
+              <span flex>{{ curBinder.name }}</span>
+            </button>
+          </md-card-title>
           <md-divider></md-divider>
           <muse-editor-document-view [documents]="documents"></muse-editor-document-view>
         </md-card>
