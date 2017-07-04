@@ -8,32 +8,11 @@
   </div>
   <ng-template tdLoading="project.load">
     <div layout="row" flex layout-fill>
-      <div flex-gt-sm="20" flex layout-fill>
-        <md-card>
-          <md-menu #bindersMenu>
-            <button md-menu-item *ngFor="let item of binders" [value]="item.id" (click)="curBinder = item">
-              <md-icon>folder</md-icon>
-              {{ item.name }}
-            </button>
-          </md-menu>
-          <md-card-title layout="row">
-            <button md-button [mdMenuTriggerFor]="bindersMenu" layout-fill style="text-align:left">
-              <md-icon>folder</md-icon>
-              <span flex>{{ curBinder.name }}</span>
-            </button>
-          </md-card-title>
-          <md-divider></md-divider>
-          <muse-editor-document-view [documents]="documents"></muse-editor-document-view>
-        </md-card>
+      <div flex-gt-sm="20" layout-fill class="editor-documents-container">
+        <muse-editor-documents [documents]="documents"></muse-editor-documents>
       </div>
-      <div flex-gt-sm="80" flex layout-fill>
-        <md-card>
-          <md-card-title>Document Title</md-card-title>
-          <md-divider></md-divider>
-          <md-card-content>
-            <p>Document Editor</p>
-          </md-card-content>
-        </md-card>
+      <div flex-gt-sm="80" layout-fill class="editor-file-container">
+        <muse-editor-file></muse-editor-file>
       </div>
     </div>
   </ng-template>

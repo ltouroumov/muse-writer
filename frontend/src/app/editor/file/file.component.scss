@@ -1,0 +1,7 @@
+// Import all the tools needed to customize the theme and extract parts of it
+@import '~@angular/material/theming';
+
+:host {
+  flex-grow: 1;
+  background: mat-color(mat-palette($mat-grey, 700));
+}

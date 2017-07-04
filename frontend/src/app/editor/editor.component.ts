@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TdDialogService, TdLoadingService} from '@covalent/core';
 import {IProject, ProjectsService} from '../projects/services/projects.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProjectDocument} from './document-view/document-view.component';
+import {ProjectDocument} from './project-document';
 
 class ProjectBinder {
   id: string;
@@ -29,23 +29,23 @@ export class EditorComponent implements OnInit {
   ];
 
   documents: ProjectDocument[] = [
-    {id: 1, title: 'Doc 1', children: []},
+    {id: 1, name: 'Doc 1', children: []},
     {
-      id: 2, title: 'Doc 2', children: [
-      {id: 9, title: 'Doc 2.1', children: []},
-      {id: 10, title: 'Doc 2.2', children: []},
-      {id: 11, title: 'Doc 2,3', children: []},
+      id: 2, name: 'Doc 2', children: [
+      {id: 9, name: 'Doc 2.1', children: []},
+      {id: 10, name: 'Doc 2.2', children: []},
+      {id: 11, name: 'Doc 2,3', children: []},
     ],
     },
     {
-      id: 3, title: 'Doc 3', children: [
-      {id: 6, title: 'Doc 3.1', children: []},
-      {id: 7, title: 'Doc 3.2', children: []},
-      {id: 8, title: 'Doc 3,3', children: []},
+      id: 3, name: 'Doc 3', children: [
+      {id: 6, name: 'Doc 3.1', children: []},
+      {id: 7, name: 'Doc 3.2', children: []},
+      {id: 8, name: 'Doc 3,3', children: []},
     ],
     },
-    {id: 4, title: 'Doc 4', children: []},
-    {id: 5, title: 'Doc 5', children: []},
+    {id: 4, name: 'Doc 4', children: []},
+    {id: 5, name: 'Doc 5', children: []},
   ];
 
   constructor(private _loadingService: TdLoadingService,
