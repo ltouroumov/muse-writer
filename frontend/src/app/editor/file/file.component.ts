@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'muse-editor-file',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileComponent implements OnInit {
 
-  constructor() { }
+  content: string = '';
 
-  ngOnInit() {
+  constructor() {
+    // Empty
+  }
+
+  ngOnInit(): void {
+    // Empty
   }
 
 }
