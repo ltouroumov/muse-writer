@@ -17,3 +17,19 @@ class Project(models.Model):
         self.updated_date = timezone.now()
 
         super().save(force_insert, force_update, using, update_fields)
+
+
+class Binder(models.Model):
+    project = models.ForeignKey(to='Project', related_name='binders')
+    first_child = models.ForeignKey(to='Document', related_name='binder_root')
+
+    name = models.CharField(max_length=128)
+
+
+class Document(models.Model):
+    binder = models.ForeignKey(to='Binder', related_name='documents')
+    path = models.CharField(max_length=512)
+    next_node = models.ForeignKey(to='Document', related_name='prev_node', null=True, blank=True)
+    first_child = models.ForeignKey(to='Document', related_name='parent_node', null=True, blank=True)
+
+    name = models.CharField(max_length=512)
