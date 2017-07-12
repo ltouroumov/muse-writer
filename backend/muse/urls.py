@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from tastypie.api import Api
-from muse_api.api import ProjectResource
+from muse_api.api import ProjectResource, BinderResource, DocumentResource
 
 v1_api = Api(api_name="v1")
 v1_api.register(ProjectResource())
+v1_api.register(BinderResource())
+v1_api.register(DocumentResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

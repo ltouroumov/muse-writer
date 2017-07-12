@@ -3,16 +3,7 @@ import {Response, Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 import {HttpInterceptorService, IRestTransform, RESTService} from '@covalent/http';
-
-export interface IProject {
-  id: number;
-  title: string;
-  summary: string;
-  words: number;
-  documents: number;
-  created_date: Date;
-  updated_date: Date;
-}
+import {IProject} from './project.model';
 
 export let defaultProjectTransform: IRestTransform = (res: Response) => res.json();
 

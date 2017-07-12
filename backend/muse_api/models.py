@@ -18,18 +18,58 @@ class Project(models.Model):
 
         super().save(force_insert, force_update, using, update_fields)
 
+    def __str__(self):
+        return self.title
+
 
 class Binder(models.Model):
     project = models.ForeignKey(to='Project', related_name='binders')
-    first_child = models.ForeignKey(to='Document', related_name='binder_root')
+    first_child = models.OneToOneField(to='Document', related_name='binder_root', blank=True, null=True)
 
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
+
+
+def get_related(obj, attr, default=None):
+    try:
+        return getattr(obj, attr)
+    except:
+        return default
 
 
 class Document(models.Model):
     binder = models.ForeignKey(to='Binder', related_name='documents')
-    path = models.CharField(max_length=512)
-    next_node = models.ForeignKey(to='Document', related_name='prev_node', null=True, blank=True)
-    first_child = models.ForeignKey(to='Document', related_name='parent_node', null=True, blank=True)
+    next_node = models.OneToOneField(to='Document', related_name='prev_node', null=True, blank=True)
+    first_child = models.OneToOneField(to='Document', related_name='parent_node', null=True, blank=True)
 
     name = models.CharField(max_length=512)
+
+    def first(self):
+        node = self
+        while hasattr(node, 'prev_node'):
+            node = node.prev_node
+
+        return node
+
+    def parent(self):
+        if hasattr(self, 'parent_node'):
+            return self.parent_node
+        elif hasattr(self, 'prev_node'):
+            first = self.first()
+            return first.parent()
+        else:
+            return None
+
+    def __str__(self):
+        stack = [self]
+        parent = self.parent()
+        while parent is not None:
+            stack.append(parent)
+            parent = parent.parent()
+
+        return "{binder} | {path}".format(
+            binder=self.binder.name,
+            path=str.join(" / ", (node.name for node in reversed(stack)))
+        )

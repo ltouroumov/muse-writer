@@ -3,8 +3,9 @@ import {Response} from '@angular/http';
 import {Title} from '@angular/platform-browser';
 import {TdLoadingService, TdMediaService} from '@covalent/core';
 import {ItemsService, ProductsService, AlertsService} from '../../services';
-import {IProject, ProjectsService} from './services/projects.service';
+import {ProjectsService} from './services/projects.service';
 import {Event, Router} from '@angular/router';
+import {IProject} from './services/project.model';
 
 @Component({
   selector: 'muse-projects',
