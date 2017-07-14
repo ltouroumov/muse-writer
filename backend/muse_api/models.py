@@ -62,14 +62,20 @@ class Document(models.Model):
         else:
             return None
 
-    def __str__(self):
-        stack = [self]
+    def parents(self):
+        stack = []
         parent = self.parent()
         while parent is not None:
             stack.append(parent)
             parent = parent.parent()
 
+        stack.reverse()
+        return stack
+
+    def __str__(self):
+        stack = self.parents() + [self]
+
         return "{binder} | {path}".format(
             binder=self.binder.name,
-            path=str.join(" / ", (node.name for node in reversed(stack)))
+            path=str.join(" / ", (node.name for node in stack))
         )
